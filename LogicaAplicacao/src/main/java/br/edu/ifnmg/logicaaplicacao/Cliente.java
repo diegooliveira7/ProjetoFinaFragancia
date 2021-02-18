@@ -6,6 +6,7 @@
 package br.edu.ifnmg.logicaaplicacao;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -22,15 +23,11 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "Cliente")
 @DiscriminatorValue(value = "1")
-public class Cliente implements Serializable {
+public class Cliente extends Pessoa implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+ 
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @Column(nullable = false, length = 12)
+    @Column(nullable = false, length = 12, unique = true)
     private String cpf;
     
     @Column(nullable = false, length = 250)
@@ -51,8 +48,10 @@ public class Cliente implements Serializable {
     
 
     public Cliente() {
-        this.id = 0L;
+        super();
         this.cpf = "";
+        this.setNome(nome);
+        this.setTipo(PessoaTipo.Cliente);
         this.rua = "";
         this.numero = 0;
         this.bairro = "";
@@ -60,16 +59,19 @@ public class Cliente implements Serializable {
         this.version = 1;
         
     }
+
+    public Cliente(Long id, String cpf, String rua, int numero, String bairro, String telefone, int version) {
+        super();
+        this.cpf = cpf;
+        this.setNome(nome);
+        this.setTipo(PessoaTipo.Cliente);
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.telefone = telefone;
+        this.version = version;
+    }
     
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -118,32 +120,64 @@ public class Cliente implements Serializable {
         this.version = version;
     }
 
-   
-    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.cpf);
+        hash = 43 * hash + Objects.hashCode(this.rua);
+        hash = 43 * hash + this.numero;
+        hash = 43 * hash + Objects.hashCode(this.bairro);
+        hash = 43 * hash + Objects.hashCode(this.telefone);
+        hash = 43 * hash + this.version;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Cliente other = (Cliente) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.numero != other.numero) {
+            return false;
+        }
+        if (this.version != other.version) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.rua, other.rua)) {
+            return false;
+        }
+        if (!Objects.equals(this.bairro, other.bairro)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
             return false;
         }
         return true;
     }
 
+    
     @Override
     public String toString() {
         return this.cpf;
     }
-    
+
+   
 }

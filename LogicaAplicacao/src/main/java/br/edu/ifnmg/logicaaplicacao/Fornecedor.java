@@ -6,6 +6,7 @@
 package br.edu.ifnmg.logicaaplicacao;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -20,8 +21,6 @@ import javax.persistence.Version;
 @Table(name = "Fornecedor")
 @DiscriminatorValue(value = "2")
 public class Fornecedor extends Pessoa implements Serializable {
-
-    private static final long serialVersionUID = 1L;
    
     
     @Column(nullable = false)
@@ -46,7 +45,8 @@ public class Fornecedor extends Pessoa implements Serializable {
     public Fornecedor() {
         
         super();
-        //this.setTipo(PessoaTipo.Fornecedor);
+        this.setTipo(PessoaTipo.Fornecedor);
+        this.setNome(nome);
         this.cnpj = "";
         this.rua = "";
         this.numero = 0;
@@ -54,10 +54,19 @@ public class Fornecedor extends Pessoa implements Serializable {
         this.telefone = "";
         this.version = 1;
     }
+
+    public Fornecedor(String cnpj, String rua, int numero, String bairro, String telefone, int version) {
+        super();
+        this.setTipo(PessoaTipo.Fornecedor);
+        this.setNome(nome);
+        this.cnpj = cnpj;
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.telefone = telefone;
+        this.version = version;
+    }
     
-    
-    
-  
 
     public String getCnpj() {
         return cnpj;
@@ -105,6 +114,64 @@ public class Fornecedor extends Pessoa implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.cnpj);
+        hash = 47 * hash + Objects.hashCode(this.rua);
+        hash = 47 * hash + this.numero;
+        hash = 47 * hash + Objects.hashCode(this.bairro);
+        hash = 47 * hash + Objects.hashCode(this.telefone);
+        hash = 47 * hash + this.version;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Fornecedor other = (Fornecedor) obj;
+        if (this.numero != other.numero) {
+            return false;
+        }
+        if (this.version != other.version) {
+            return false;
+        }
+        if (!Objects.equals(this.cnpj, other.cnpj)) {
+            return false;
+        }
+        if (!Objects.equals(this.rua, other.rua)) {
+            return false;
+        }
+        if (!Objects.equals(this.bairro, other.bairro)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return this.cnpj;
     }
 
    

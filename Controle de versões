@@ -1,0 +1,5 @@
+Larisse 17/02 às 22:57
+- Extendeu a classe de pessoa em cliente
+- Adicionou os toStrings
+- Removeu os IDs de cliente e fornecedor
+- Usuário não herda mais de pessoa
