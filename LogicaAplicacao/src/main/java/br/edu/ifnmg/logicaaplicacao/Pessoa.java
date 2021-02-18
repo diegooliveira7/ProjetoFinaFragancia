@@ -28,7 +28,6 @@ import javax.persistence.Table;
 @Table(name = "Pessoas")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER, name = "tipo")
-
 public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,23 +36,27 @@ public class Pessoa implements Serializable {
     private Long id;
     
     @Column(nullable = false, length = 250)
-    String nome;
+    private String nome;
     
     @Column(nullable = true, length = 250)
     private String email;
     
+    private String endereco;
+    
     @Enumerated(EnumType.ORDINAL)
     private PessoaTipo tipo;
+    
+    private String telefone;
 
     public Pessoa() {
         this.id = 0L;
         this.nome = "";
         this.email = "";
+        this.telefone = "";
+        this.endereco = "";
         this.tipo = PessoaTipo.Fornecedor;
     }
-    
-    
-   
+
     public Long getId() {
         return id;
     }
@@ -86,13 +89,31 @@ public class Pessoa implements Serializable {
         this.tipo = tipo;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.id);
-        hash = 83 * hash + Objects.hashCode(this.nome);
-        hash = 83 * hash + Objects.hashCode(this.email);
-        hash = 83 * hash + Objects.hashCode(this.tipo);
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.nome);
+        hash = 79 * hash + Objects.hashCode(this.email);
+        hash = 79 * hash + Objects.hashCode(this.endereco);
+        hash = 79 * hash + Objects.hashCode(this.tipo);
+        hash = 79 * hash + Objects.hashCode(this.telefone);
         return hash;
     }
 
@@ -114,6 +135,12 @@ public class Pessoa implements Serializable {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -122,10 +149,7 @@ public class Pessoa implements Serializable {
         }
         return true;
     }
-
-   
-   
-
+    
     @Override
     public String toString() {
         return this.nome;

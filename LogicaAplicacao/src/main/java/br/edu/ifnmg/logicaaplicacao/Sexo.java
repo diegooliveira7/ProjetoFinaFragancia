@@ -7,11 +7,9 @@ package br.edu.ifnmg.logicaaplicacao;
 
 /**
  *
- * @author larisse
+ * @author diego
  */
-public enum PessoaTipo {
-    
-    Cliente,
-    Fornecedor
-    
+public enum Sexo {
+    Homem,
+    Mulher
 }

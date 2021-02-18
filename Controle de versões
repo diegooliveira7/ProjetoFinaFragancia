@@ -5,3 +5,8 @@ Larisse 17/02 às 22:57
 - Usuário não herda mais de pessoa
 
 Diego 18/02 às 10hrs ...
+- Juntei todos os componentes do endereço em um só - "endereço"
+- Coloquei endereço e telefone em pessoa
+- Mudei o contrutor com paranmetros
+- Configurei a subclasse estoque em produto 
+- Eu retirei a razão do produto 
