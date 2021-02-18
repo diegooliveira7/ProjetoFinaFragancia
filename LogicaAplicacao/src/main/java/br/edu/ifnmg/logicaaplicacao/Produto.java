@@ -13,12 +13,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 
 /**
  *
  * @author larisse
  */
 @Entity
+@Table(name="Produtos")
+@SecondaryTable(name= "estoque")
 public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,23 +34,17 @@ public class Produto implements Serializable {
     private String descricao;
     
     @Column(precision = 8, scale = 2)
-    private BigDecimal valor;
+    private BigDecimal valor_unitario;
     
-    @Column(nullable = false)
-    private int razao;
-    
-    @Column(nullable = false)
+    @Column(nullable = false, table="estoque")
     private int estoque;
 
     public Produto() {
         this.id = 0L;
         this.descricao = "";
-        this.valor =  new BigDecimal("0.00");;
-        this.razao = razao;
+        this.valor_unitario =  new BigDecimal("0.00");
         this.estoque = estoque;
     }
-    
-    
     
     public Long getId() {
         return id;
@@ -65,19 +63,11 @@ public class Produto implements Serializable {
     }
 
     public BigDecimal getValor() {
-        return valor;
+        return valor_unitario;
     }
 
     public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public int getRazao() {
-        return razao;
-    }
-
-    public void setRazao(int razao) {
-        this.razao = razao;
+        this.valor_unitario = valor;
     }
 
     public int getEstoque() {
@@ -93,8 +83,7 @@ public class Produto implements Serializable {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.id);
         hash = 97 * hash + Objects.hashCode(this.descricao);
-        hash = 97 * hash + Objects.hashCode(this.valor);
-        hash = 97 * hash + this.razao;
+        hash = 97 * hash + Objects.hashCode(this.valor_unitario);
         hash = 97 * hash + this.estoque;
         return hash;
     }
@@ -111,9 +100,6 @@ public class Produto implements Serializable {
             return false;
         }
         final Produto other = (Produto) obj;
-        if (this.razao != other.razao) {
-            return false;
-        }
         if (this.estoque != other.estoque) {
             return false;
         }
@@ -123,7 +109,7 @@ public class Produto implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.valor, other.valor)) {
+        if (!Objects.equals(this.valor_unitario, other.valor_unitario)) {
             return false;
         }
         return true;

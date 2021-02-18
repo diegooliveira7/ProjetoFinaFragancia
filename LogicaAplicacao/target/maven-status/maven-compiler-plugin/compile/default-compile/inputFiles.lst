@@ -1,12 +1,13 @@
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/FornecedorRepositorio.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/ClienteRepositorio.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/Pessoa.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/Produto.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/UsuarioRepositorio.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/ProdutoRepositorio.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/Repositorio.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/PessoaRepositorio.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/Cliente.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/Usuario.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/PessoaTipo.java
-/home/larisse/√Årea de Trabalho/ProjetoFinaFragancia-main/ProjetoFinaFragancia/LogicaAplicacao/src/main/java/br/edu/ifnmg/logicaaplicacao/Fornecedor.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Sexo.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\ProdutoRepositorio.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Produto.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\FornecedorRepositorio.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Repositorio.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\PessoaRepositorio.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Cliente.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\ClienteRepositorio.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Fornecedor.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Usuario.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\UsuarioRepositorio.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Pessoa.java
+A:\Documentos\6 - Periodo\Metodologias ¡geis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\PessoaTipo.java
