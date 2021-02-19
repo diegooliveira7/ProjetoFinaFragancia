@@ -10,3 +10,8 @@ Diego 18/02 às 10hrs ...
 - Mudei o contrutor com paranmetros
 - Configurei a subclasse estoque em produto 
 - Eu retirei a razão do produto 
+
+Diego 18/02 ás 22hrs ...
+- Criei as classes ProdutoDAO, TransacaoDAO
+- Criei os repositórios das classes produto e transacao
+- testei ambas 
