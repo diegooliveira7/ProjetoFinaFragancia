@@ -7,6 +7,8 @@
     <class>br.edu.ifnmg.logicaaplicacao.Cliente</class>
     <class>br.edu.ifnmg.logicaaplicacao.Fornecedor</class>
     <class>br.edu.ifnmg.logicaaplicacao.Produto</class>
+    <class>br.edu.ifnmg.logicaaplicacao.TransacaoItem</class>
+    <class>br.edu.ifnmg.logicaaplicacao.Transacao</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/finafragrancia?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

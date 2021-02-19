@@ -30,6 +30,8 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String nome;
+    
     @Column(nullable = false, length = 250)
     private String descricao;
     
@@ -41,6 +43,7 @@ public class Produto implements Serializable {
 
     public Produto() {
         this.id = 0L;
+        this.nome = "";
         this.descricao = "";
         this.valor_unitario =  new BigDecimal("0.00");
         this.estoque = estoque;
@@ -78,10 +81,19 @@ public class Produto implements Serializable {
         this.estoque = estoque;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.nome);
         hash = 97 * hash + Objects.hashCode(this.descricao);
         hash = 97 * hash + Objects.hashCode(this.valor_unitario);
         hash = 97 * hash + this.estoque;
@@ -103,6 +115,9 @@ public class Produto implements Serializable {
         if (this.estoque != other.estoque) {
             return false;
         }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
         if (!Objects.equals(this.descricao, other.descricao)) {
             return false;
         }
@@ -114,7 +129,6 @@ public class Produto implements Serializable {
         }
         return true;
     }
-
     
     @Override
     public String toString() {
