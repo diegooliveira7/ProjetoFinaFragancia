@@ -4,7 +4,10 @@ br\edu\ifnmg\apresentacao\TelaPrincipal.class
 br\edu\ifnmg\apresentacao\Console.class
 br\edu\ifnmg\apresentacao\FornecedorBuscar.class
 br\edu\ifnmg\apresentacao\ClienteEditar$2.class
+br\edu\ifnmg\apresentacao\CompraRegistro.class
+br\edu\ifnmg\apresentacao\CompraRegistro$4.class
 br\edu\ifnmg\apresentacao\ProdutoBuscar.class
+br\edu\ifnmg\apresentacao\TelaPrincipal$5.class
 br\edu\ifnmg\apresentacao\FornecedorEditar$1.class
 br\edu\ifnmg\apresentacao\ProdutoBuscar$4.class
 br\edu\ifnmg\apresentacao\Login$3.class
@@ -12,6 +15,8 @@ br\edu\ifnmg\apresentacao\ProdutoEditar.class
 br\edu\ifnmg\apresentacao\FornecedorEditar$3.class
 br\edu\ifnmg\apresentacao\FornecedorBuscar$3.class
 br\edu\ifnmg\apresentacao\ProdutoEditar$2.class
+br\edu\ifnmg\apresentacao\CompraRegistro$2.class
+br\edu\ifnmg\apresentacao\CompraRegistro$5.class
 br\edu\ifnmg\apresentacao\TelaPrincipal$3.class
 br\edu\ifnmg\apresentacao\FornecedorEditar.class
 br\edu\ifnmg\apresentacao\ClienteEditar$3.class
@@ -22,7 +27,9 @@ br\edu\ifnmg\apresentacao\Login$2.class
 br\edu\ifnmg\apresentacao\ClienteBuscar$1.class
 br\edu\ifnmg\apresentacao\ClienteEditar$1.class
 br\edu\ifnmg\apresentacao\FornecedorBuscar$2.class
+br\edu\ifnmg\apresentacao\CompraRegistro$3.class
 br\edu\ifnmg\apresentacao\TelaPrincipal$1.class
+br\edu\ifnmg\apresentacao\CompraRegistro$6.class
 br\edu\ifnmg\apresentacao\ProdutoEditar$1.class
 br\edu\ifnmg\apresentacao\TelaPrincipal$2.class
 br\edu\ifnmg\apresentacao\ClienteEditar.class
@@ -34,3 +41,4 @@ br\edu\ifnmg\apresentacao\Login.class
 br\edu\ifnmg\apresentacao\FornecedorBuscar$4.class
 br\edu\ifnmg\apresentacao\ClienteBuscar$4.class
 br\edu\ifnmg\apresentacao\ClienteBuscar.class
+br\edu\ifnmg\apresentacao\CompraRegistro$1.class

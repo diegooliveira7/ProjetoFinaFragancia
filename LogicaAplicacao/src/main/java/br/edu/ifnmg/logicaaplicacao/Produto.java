@@ -77,8 +77,17 @@ public class Produto implements Serializable {
         return estoque;
     }
 
-    public void setEstoque(int estoque) {
+    public void setEstoque(int estoque){
         this.estoque = estoque;
+    }
+    
+    public void setEstoqueT(int estoque, int verificacao) {
+        if(verificacao == 1){
+            this.estoque = estoque + this.estoque;
+        }
+        if(verificacao == 2){
+            this.estoque = this.estoque - estoque;
+        }
     }
 
     public String getNome() {

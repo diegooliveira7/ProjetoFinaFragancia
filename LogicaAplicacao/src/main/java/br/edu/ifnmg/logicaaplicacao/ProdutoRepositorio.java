@@ -11,4 +11,6 @@ package br.edu.ifnmg.logicaaplicacao;
  */
 public interface ProdutoRepositorio extends Repositorio<Produto> {
     
+    public Produto ProdutoNome(String nome);
+    
 }

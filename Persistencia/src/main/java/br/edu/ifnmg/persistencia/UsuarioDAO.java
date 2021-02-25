@@ -22,15 +22,15 @@ public class  UsuarioDAO extends DataAccessObject<Usuario> implements UsuarioRep
 
     
     @Override
-    public boolean autenticar(String login, String senha) {
+    public Usuario autenticar(String login, String senha) {
         Query sql =  this.manager.createQuery("select o from Usuario o where o.login = :login and o.senha = :senha");
         sql.setParameter("login", login);
         sql.setParameter("senha", senha);
         
         if(sql.getResultList().size() > 0)
-            return true;
+            return (Usuario) sql.getSingleResult();
         
-        return false;
+        return null;
     }
 
     @Override

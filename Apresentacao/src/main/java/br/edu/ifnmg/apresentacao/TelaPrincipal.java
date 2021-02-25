@@ -5,6 +5,8 @@
  */
 package br.edu.ifnmg.apresentacao;
 
+import br.edu.ifnmg.logicaaplicacao.Usuario;
+
 /**
  *
  * @author Antônia
@@ -14,8 +16,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    private Usuario usuario; 
+    
     public TelaPrincipal() {
         initComponents();
+        this.usuario = new Usuario();
+    }
+    
+    public void setUsuario(Usuario usuario){
+        this.usuario = usuario;
     }
 
     /**
@@ -33,6 +42,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCliente = new javax.swing.JMenuItem();
         menuFornecedor = new javax.swing.JMenuItem();
         menuProduto = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FinaFragrancia");
@@ -67,6 +79,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.add(menuProduto);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Transação");
+
+        jMenuItem1.setText("Registrar Compra");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem2.setText("Resgistrar Venda");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -104,6 +136,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_menuProdutoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        CompraRegistro tela = new CompraRegistro();
+        this.add(tela);
+        
+        tela.setVisible(true);
+        tela.setUsuario(usuario);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        VendaRegistrar tela = new VendaRegistrar();
+        this.add(tela);
+        tela.setVisible(true);
+        tela.setUsuario(usuario);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,7 +192,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuCliente;
     private javax.swing.JMenuItem menuFornecedor;
     private javax.swing.JMenuItem menuProduto;

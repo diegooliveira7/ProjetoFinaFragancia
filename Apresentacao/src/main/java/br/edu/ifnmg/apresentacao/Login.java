@@ -6,6 +6,7 @@
 package br.edu.ifnmg.apresentacao;
 
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
+import br.edu.ifnmg.logicaaplicacao.Usuario;
 import br.edu.ifnmg.logicaaplicacao.UsuarioRepositorio;
 import javax.swing.JOptionPane;
 /**
@@ -19,7 +20,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-         repositorio = RepositorioFactory.getUsuarioRepositorio();
+        repositorio = RepositorioFactory.getUsuarioRepositorio();
         initComponents();
     }
 
@@ -105,9 +106,10 @@ public class Login extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String login = txtLogin.getText();
         String senha = String.valueOf(txtSenha.getPassword());
-        
-        if(repositorio.autenticar(login, senha)){
+        Usuario usuario = repositorio.autenticar(login, senha);
+        if(usuario != null){
             TelaPrincipal tela = new TelaPrincipal();
+            tela.setUsuario(usuario);
             tela.setVisible(true);
             this.setVisible(false);
         } else {

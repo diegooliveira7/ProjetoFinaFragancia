@@ -43,5 +43,21 @@ public class ProdutoDAO extends DataAccessObject<Produto> implements ProdutoRepo
     public boolean Apagar(Produto obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Produto ProdutoNome(String nome) {
+        
+        String jpql = "select pd from Produto pd where pd.nome =:parameter";
+        Query sql = this.manager.createQuery(jpql);
+        
+        sql.setParameter("parameter", nome);
+        
+        if(sql.getResultList().size() > 0){
+            return (Produto) sql.getSingleResult();
+        }
+        
+        return null;
+        
+    }
     
 }
