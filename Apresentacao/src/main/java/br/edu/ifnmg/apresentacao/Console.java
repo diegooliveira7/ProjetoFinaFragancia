@@ -5,9 +5,12 @@
  */
 package br.edu.ifnmg.apresentacao;
 
+import br.edu.ifnmg.logicaaplicacao.Cliente;
+import br.edu.ifnmg.logicaaplicacao.ClienteRepositorio;
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
 import br.edu.ifnmg.logicaaplicacao.TransacaoRepositorio;
-import br.edu.ifnmg.logicaaplicacao.UsuarioRepositorio;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,11 +23,21 @@ public class Console {
      */
     public static void main(String[] args) {
         
-            UsuarioRepositorio repo = RepositorioFactory.getUsusarioRepositorio();
-            System.out.println(repo.Abrir(301L).getLogin());
+//            UsuarioRepositorio repo = RepositorioFactory.getUsuarioRepositorio();
+//            System.out.println(repo.Abrir(301L).getLogin());
             
-            TransacaoRepositorio repoT = RepositorioFactory.getTransacaoRepositorio();
-            System.out.println(repoT.Abrir(251L).getValorTotal());
+            ClienteRepositorio repo = RepositorioFactory.getClienteRepositorio();
+            Cliente t = repo.Abrir(1L);
+            System.out.println(t.getCpf());
+            System.out.println(t.getId());
+            List<Cliente> list = repo.Buscar(t);
+            for(Cliente c: list){
+                System.out.println(c.getCpf());
+            }
+//            System.out.println(repo.Abrir(301L).getLogin());
+//            
+//            TransacaoRepositorio repoT = RepositorioFactory.getTransacaoRepositorio();
+//            System.out.println(repoT.Abrir(251L).getValorTotal());
     }
    
     

@@ -1,6 +1,7 @@
 br\edu\ifnmg\persistencia\ProdutoDAO.class
-br\edu\ifnmg\persistencia\DataAccessObject.class
 br\edu\ifnmg\persistencia\FornecedorDAO.class
+br\edu\ifnmg\persistencia\UsuarioDAO.class
+br\edu\ifnmg\persistencia\DataAccessObject.class
 br\edu\ifnmg\persistencia\PessoaDAO.class
 br\edu\ifnmg\persistencia\ClienteDAO.class
-br\edu\ifnmg\persistencia\UsuarioDAO.class
+br\edu\ifnmg\persistencia\TransacaoDAO.class

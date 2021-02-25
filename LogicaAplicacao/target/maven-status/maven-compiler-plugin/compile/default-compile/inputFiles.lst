@@ -5,9 +5,11 @@ A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicaca
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\FornecedorRepositorio.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Repositorio.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Transacao.java
+A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\RepositorioFactory.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\PessoaRepositorio.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\TransacaoTipo.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Cliente.java
+A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\TransacaoRepositorio.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\ClienteRepositorio.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Fornecedor.java
 A:\Documentos\6 - Periodo\Metodologias Ágeis\ProjetoFinaFragancia\LogicaAplicacao\src\main\java\br\edu\ifnmg\logicaaplicacao\Usuario.java

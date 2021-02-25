@@ -76,7 +76,7 @@ public class RepositorioFactory {
         return null;
     }
     
-    public static UsuarioRepositorio getUsusarioRepositorio(){
+    public static UsuarioRepositorio getUsuarioRepositorio(){
         if(usuario == null){
             String nomeclasse = propriedades.getProperty("UsuarioRepositorio");
             usuario = (UsuarioRepositorio) getInstancia(nomeclasse);
