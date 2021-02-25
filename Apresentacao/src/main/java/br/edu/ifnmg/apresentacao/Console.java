@@ -5,8 +5,8 @@
  */
 package br.edu.ifnmg.apresentacao;
 
-import br.edu.ifnmg.logicaaplicacao.Produto;
-import br.edu.ifnmg.logicaaplicacao.ProdutoRepositorio;
+import br.edu.ifnmg.logicaaplicacao.Fornecedor;
+import br.edu.ifnmg.logicaaplicacao.FornecedorRepositorio;
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
 
 /**
@@ -36,15 +36,16 @@ public class Console {
 //            }
 
                     
-//            FornecedorRepositorio repo = RepositorioFactory.getFornecedorRepositorio();
-//            Fornecedor f = repo.Abrir(351L);
+            FornecedorRepositorio repo = RepositorioFactory.getFornecedorRepositorio();
+            Fornecedor f = repo.Abrir(801L);
+            System.out.println(f.getCnpj().toString());
 //            List<Fornecedor> list = repo.Buscar(f);
 //            for(Fornecedor c: list){
 //                System.out.println(c.getCnpj());
 //            }
-            ProdutoRepositorio repo = RepositorioFactory.getProdutoRepositorio();
-            Produto p = repo.Abrir(951L);
-            repo.Apagar(p);
+//            ProdutoRepositorio repo = RepositorioFactory.getProdutoRepositorio();
+//            Produto p = repo.Abrir(951L);
+//            repo.Apagar(p);
 //            PessoaRepositorio repo = RepositorioFactory.getPessoaRepositorio();
 //            Pessoa f = repo.Abrir(351L);
 //            System.out.println(f.getNome());

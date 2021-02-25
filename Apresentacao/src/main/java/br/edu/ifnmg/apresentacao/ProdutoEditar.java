@@ -33,7 +33,6 @@ public class ProdutoEditar extends javax.swing.JInternalFrame {
         this.repositorio = RepositorioFactory.getProdutoRepositorio();
         initComponents();
         this.setComponentes();
-        initComponents();
     }
     
      private void setComponentes(){
