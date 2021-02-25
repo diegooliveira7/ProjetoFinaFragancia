@@ -25,39 +25,16 @@ public class ProdutoDAO extends DataAccessObject<Produto> implements ProdutoRepo
     @Override
     public List<Produto> Buscar(Produto obj) {
         
-        // Consulta JPQL padrão
-        String jpql = "select o from Usuario o";
+        String jpql = "select o from Produto o";
         
-        // Dicionário de parâmetros
-        HashMap<String, Object> parametros = new HashMap<>();
-        
-        // Verifico quais os valores que existem no obj
         if(obj != null){
-            if(obj.getNome() != null & !obj.getNome().isEmpty())
-                parametros.put("nome", obj.getNome());
-            if(obj.getId() > 0)
-                parametros.put("id", obj.getId());
+            jpql = "select pd from Produto pd where pd.id =:parameter";
+            Query sql = this.manager.createQuery(jpql);
+        
+            sql.setParameter("parameter", obj.getId());
+            return sql.getResultList();
         }
-        
-        // Crio a parte da JPQL que contém os filtros
-        if(!parametros.isEmpty()){
-            String filtros = "";
-            jpql += " where ";
-            for(String campo : parametros.keySet()){
-                if(!filtros.isEmpty())
-                    filtros += " and ";
-                jpql += "o." + campo + " = :" + campo;
-            }
-            jpql += filtros;
-        }
-        
-        Query sql = this.manager.createQuery(jpql);
-        
-        if(!parametros.isEmpty())
-            for(String campo : parametros.keySet())
-                sql.setParameter(campo, parametros.get(campo));
-            
-        
+        Query sql = this.manager.createQuery(jpql);        
         return sql.getResultList();
             
     }

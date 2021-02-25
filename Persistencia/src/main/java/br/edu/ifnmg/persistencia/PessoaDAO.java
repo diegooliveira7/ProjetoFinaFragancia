@@ -8,6 +8,7 @@ package br.edu.ifnmg.persistencia;
 import br.edu.ifnmg.logicaaplicacao.Pessoa;
 import br.edu.ifnmg.logicaaplicacao.PessoaRepositorio;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -22,7 +23,17 @@ public class PessoaDAO extends DataAccessObject<Pessoa> implements PessoaReposit
 
     @Override
     public List<Pessoa> Buscar(Pessoa obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String jpql = "select o from Pessoa o";
+        
+        if(obj != null){
+            jpql = "select pd from Pessoa pd where pd.id =:parameter";
+            Query sql = this.manager.createQuery(jpql);
+        
+            sql.setParameter("parameter", obj.getId());
+            return sql.getResultList();
+        }
+        Query sql = this.manager.createQuery(jpql);        
+        return sql.getResultList();
     }
 
     @Override

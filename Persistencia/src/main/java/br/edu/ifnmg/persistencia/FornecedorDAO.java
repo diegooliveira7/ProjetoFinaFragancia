@@ -23,56 +23,19 @@ public class FornecedorDAO extends DataAccessObject<Fornecedor> implements Forne
     }
 
        @Override
-    public List<Fornecedor> Buscar(Fornecedor obj) {
+    public List<Fornecedor> Buscar(Fornecedor obg) {
         
-        String jpql = "select for from Fornecedor for";
-        //String filtros = "";
-        HashMap<String, Object> parametros = new HashMap<>();
+        String jpql = "select o from Fornecedor o";
         
-            if(obj != null){
-
-                if(obj.getNome() != null & !obj.getNome().isEmpty())
-                    parametros.put("nome", obj.getNome());
-                if(obj.getId()> 0)
-                    parametros.put("id", obj.getId());
-            }
-            
-//            if(obj.getTelefone().length() > 0){
-//                String filtros = "";
-//                filtros += "for.telefone like :telefone";
-//                parametros.put("telefone", obj.getTelefone() + "%");
-//            }
-            
-             if(obj.getCnpj().length() > 0){
-                String filtros = "";
-                filtros += "for.cpf like :cnpj";
-                parametros.put("cnpj", obj.getCnpj() + "%");
-            }
-             
-            if(!parametros.isEmpty()){
-                String filtros = "";
-                jpql += " where ";
-                for(String campo : parametros.keySet()){
-                    if(!filtros.isEmpty())
-                        filtros += " and ";
-                    jpql += "for." + campo + " =:" + campo;
-                }
-                jpql += filtros;
-            }
-
-            
-            
+        if(obg != null){
+            jpql = "select pd from Fornecedor pd where pd.id =:parameter";
             Query sql = this.manager.createQuery(jpql);
-            
-            
-            if(!parametros.isEmpty())
-                for(String campo: parametros.keySet())
-                    sql.setParameter(campo, parametros.get(campo));
-            
+        
+            sql.setParameter("parameter", obg.getId());
             return sql.getResultList();
-           
-           
-            
+        }
+        Query sql = this.manager.createQuery(jpql);        
+        return sql.getResultList();
     }    
 
     @Override

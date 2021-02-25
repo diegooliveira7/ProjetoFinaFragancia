@@ -5,11 +5,10 @@
  */
 package br.edu.ifnmg.apresentacao;
 
-import br.edu.ifnmg.logicaaplicacao.Cliente;
-import br.edu.ifnmg.logicaaplicacao.ClienteRepositorio;
+import br.edu.ifnmg.logicaaplicacao.Fornecedor;
+import br.edu.ifnmg.logicaaplicacao.Pessoa;
+import br.edu.ifnmg.logicaaplicacao.PessoaRepositorio;
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
-import br.edu.ifnmg.logicaaplicacao.TransacaoRepositorio;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,13 +25,27 @@ public class Console {
 //            UsuarioRepositorio repo = RepositorioFactory.getUsuarioRepositorio();
 //            System.out.println(repo.Abrir(301L).getLogin());
             
-            ClienteRepositorio repo = RepositorioFactory.getClienteRepositorio();
-            Cliente t = repo.Abrir(1L);
-            System.out.println(t.getCpf());
-            System.out.println(t.getId());
-            List<Cliente> list = repo.Buscar(t);
-            for(Cliente c: list){
-                System.out.println(c.getCpf());
+//            ClienteRepositorio repo = RepositorioFactory.getClienteRepositorio();
+//            Cliente t = repo.Abrir(1L);
+//            System.out.println(t.getCpf());
+//            System.out.println(t.getId());
+//            List<Cliente> list = repo.Buscar(t);
+//            for(Cliente c: list){
+//                System.out.println(c.getCpf());
+//            }
+
+                    
+//            FornecedorRepositorio repo = RepositorioFactory.getFornecedorRepositorio();
+//            Fornecedor f = repo.Abrir(351L);
+//            List<Fornecedor> list = repo.Buscar(f);
+//            for(Fornecedor c: list){
+//                System.out.println(c.getCnpj());
+//            }
+            
+            PessoaRepositorio repo = RepositorioFactory.getPessoaRepositorio();
+            List<Pessoa> list = repo.Buscar(null);
+            for(Pessoa c: list){
+                System.out.println(c.getNome());
             }
 //            System.out.println(repo.Abrir(301L).getLogin());
 //            
