@@ -42,6 +42,14 @@ public class CompraRegistro extends javax.swing.JInternalFrame {
         this.transacao = new Transacao();
         this.usuario = new Usuario();
     }
+
+    public Transacao getTransacao() {
+        return transacao;
+    }
+
+    public void setTransacao(Transacao transacao) {
+        this.transacao = transacao;
+    }
     
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;
@@ -183,6 +191,11 @@ public class CompraRegistro extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Remover");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         tblItem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -205,6 +218,11 @@ public class CompraRegistro extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblItemMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(tblItem);
@@ -314,12 +332,23 @@ public class CompraRegistro extends javax.swing.JInternalFrame {
             try{
                 Produto produto = repositorioProduto.ProdutoNome(this.txtProduto.getText());
                 if(produto != null){
+                    int contador = 0;
                     TransacaoItem item = new TransacaoItem(produto,Integer.valueOf(this.txtQuantidade.getText()),this.transacao);
-                    this.transacao.add(item);
-                    this.setTable();
-                    this.txtQuantidade.setText("");
-                    this.txtProduto.setText("");
-                    this.updateValeu();
+                    for(TransacaoItem i : this.transacao.getItens()){
+                        if(i.getProduto().equals(produto)){
+                            contador = 1;
+                        }
+                    }
+                    
+                    if(contador == 0){
+                        this.transacao.add(item);
+                        this.setTable();
+                        this.txtQuantidade.setText("");
+                        this.txtProduto.setText("");
+                        this.updateValeu();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Produto já existe na lista!", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "Não possui esse produto cadastrado!", "Information", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -366,6 +395,14 @@ public class CompraRegistro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Fornecedor ou os itens da compra não estão preenchidos!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tblItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemMouseClicked
+        
+    }//GEN-LAST:event_tblItemMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
