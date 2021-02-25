@@ -5,8 +5,8 @@
  */
 package br.edu.ifnmg.apresentacao;
 
-import br.edu.ifnmg.logicaaplicacao.Fornecedor;
-import br.edu.ifnmg.logicaaplicacao.FornecedorRepositorio;
+import br.edu.ifnmg.logicaaplicacao.Produto;
+import br.edu.ifnmg.logicaaplicacao.ProdutoRepositorio;
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
 
 /**
@@ -22,9 +22,12 @@ public class Console {
         
 //            UsuarioRepositorio repo = RepositorioFactory.getUsuarioRepositorio();
 //            System.out.println(repo.Abrir(301L).getLogin());
+//            Usuario u = repo.Abrir(Long.MIN_VALUE)
             
 //            ClienteRepositorio repo = RepositorioFactory.getClienteRepositorio();
-//            Cliente t = repo.Abrir(1L);
+//            Cliente t = repo.Abrir(751L);
+//            
+//            repo.Apagar(t);
 //            System.out.println(t.getCpf());
 //            System.out.println(t.getId());
 //            List<Cliente> list = repo.Buscar(t);
@@ -39,13 +42,15 @@ public class Console {
 //            for(Fornecedor c: list){
 //                System.out.println(c.getCnpj());
 //            }
-            
+            ProdutoRepositorio repo = RepositorioFactory.getProdutoRepositorio();
+            Produto p = repo.Abrir(951L);
+            repo.Apagar(p);
 //            PessoaRepositorio repo = RepositorioFactory.getPessoaRepositorio();
 //            Pessoa f = repo.Abrir(351L);
 //            System.out.println(f.getNome());
-            FornecedorRepositorio repo = RepositorioFactory.getFornecedorRepositorio();
-            Fornecedor f = repo.Abrir(351L);
-            System.out.println(f.getCnpj());
+//            FornecedorRepositorio repo = RepositorioFactory.getFornecedorRepositorio();
+//            Fornecedor f = repo.Abrir(351L);
+//            System.out.println(f.getCnpj());
 //            System.out.println(repo.Abrir(301L).getLogin());
 //            
 //            TransacaoRepositorio repoT = RepositorioFactory.getTransacaoRepositorio();

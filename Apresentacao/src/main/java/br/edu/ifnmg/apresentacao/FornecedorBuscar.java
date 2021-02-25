@@ -5,9 +5,11 @@
  */
 
 package br.edu.ifnmg.apresentacao;
+import br.edu.ifnmg.logicaaplicacao.Cliente;
 import br.edu.ifnmg.logicaaplicacao.Fornecedor;
 import br.edu.ifnmg.logicaaplicacao.FornecedorRepositorio;
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -47,6 +49,8 @@ public class FornecedorBuscar extends javax.swing.JInternalFrame {
         tblResultado = new javax.swing.JTable();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Buscar Fornecedor");
 
         jLabel1.setText("Nome:");
@@ -59,6 +63,11 @@ public class FornecedorBuscar extends javax.swing.JInternalFrame {
         });
 
         btnNovo.setText("Novo Fornecedor");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -144,20 +153,26 @@ public class FornecedorBuscar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        fornecedor.setNome(txtBuscaFornecedor.getText());
         
-        List<Fornecedor> resultado = repositorio.Buscar(fornecedor);
+        List<Fornecedor> list = new ArrayList<>();
+        
+        try{
+            if(!this.txtBuscaFornecedor.getText().isEmpty()){
+                list = this.repositorio.FornecedorNome(this.txtBuscaFornecedor.getText());
+            
+            }else{
+                list = this.repositorio.FornecedorNome(null);
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Erro durante o processo!", "Information", JOptionPane.ERROR_MESSAGE);
+        }
         
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("NOME");
         modelo.addColumn("CNPJ");
-        
-       
-      
-        
-        for(Fornecedor c : resultado){
+
+        for(Fornecedor c : list){
             
             Vector linha = new Vector();
             linha.add(c.getId());
@@ -200,6 +215,12 @@ public class FornecedorBuscar extends javax.swing.JInternalFrame {
         this.getParent().add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_tblResultadoMouseClicked
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        FornecedorEditar tela = new FornecedorEditar(new Fornecedor());
+        this.getParent().add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnNovoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

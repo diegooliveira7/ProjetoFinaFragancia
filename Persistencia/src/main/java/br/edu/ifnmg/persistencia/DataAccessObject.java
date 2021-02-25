@@ -55,7 +55,26 @@ public abstract class DataAccessObject<T> implements Repositorio<T>{
         }
         
     }
-
+    
+    @Override
+    public boolean Apagar(T obg) {
+        EntityTransaction transaction = this.manager.getTransaction();
+        try{
+            transaction.begin();// inicia a transação
+            
+            this.manager.remove(obg);//faz a transação, nesse caso trocasse o persiste pelo remove
+            
+            transaction.commit(); // Finalia a transação
+            
+            return true; 
+            
+        }catch(Exception exeption){
+            transaction.rollback();
+            System.out.println("Exceção: " + exeption);
+            return false;
+        }
+    }
+    
     @Override
     public abstract List<T> Buscar(T obj);
     

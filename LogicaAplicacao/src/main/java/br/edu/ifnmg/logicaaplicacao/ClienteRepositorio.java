@@ -5,10 +5,12 @@
  */
 package br.edu.ifnmg.logicaaplicacao;
 
+import java.util.List;
+
 /**
  *
  * @author larisse
  */
 public interface ClienteRepositorio extends Repositorio<Cliente>{
-    
+    public List<Cliente> ClienteNome(String nome);
 }

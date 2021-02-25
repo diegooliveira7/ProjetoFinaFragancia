@@ -5,10 +5,12 @@
  */
 package br.edu.ifnmg.logicaaplicacao;
 
+import java.util.List;
+
 /**
  *
  * @author larisse
  */
 public interface FornecedorRepositorio extends Repositorio<Fornecedor>{
-    
+    public List<Fornecedor> FornecedorNome(String nome);
 }

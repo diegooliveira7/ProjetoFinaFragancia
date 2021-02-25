@@ -72,6 +72,8 @@ public class ClienteEditar extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Editar Cliente");
 
         jLabel1.setText("ID");
@@ -213,7 +215,8 @@ public class ClienteEditar extends javax.swing.JInternalFrame {
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
-        if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o cliente atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
+        try{
+            if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o cliente atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
                 == JOptionPane.YES_OPTION){
             if(repositorio.Apagar(this.cliente)){
                 this.setVisible(false);
@@ -221,7 +224,11 @@ public class ClienteEditar extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
                         JOptionPane.ERROR_MESSAGE);
             }
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Erro no processo!", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnRemoverActionPerformed
 
 

@@ -8,11 +8,11 @@ package br.edu.ifnmg.apresentacao;
 import br.edu.ifnmg.logicaaplicacao.Cliente;
 import br.edu.ifnmg.logicaaplicacao.ClienteRepositorio;
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -43,11 +43,12 @@ public class ClienteBuscar extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         btnNovoCliente = new javax.swing.JButton();
-        btnLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResultado = new javax.swing.JTable();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
         setTitle("Buscar Cliente");
 
@@ -61,11 +62,9 @@ public class ClienteBuscar extends javax.swing.JInternalFrame {
         });
 
         btnNovoCliente.setText("Novo Cliente");
-
-        btnLimpar.setText("Limpar");
-        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+        btnNovoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparActionPerformed(evt);
+                btnNovoClienteActionPerformed(evt);
             }
         });
 
@@ -118,10 +117,8 @@ public class ClienteBuscar extends javax.swing.JInternalFrame {
                         .addComponent(txtBuscaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuscar)
-                        .addGap(103, 103, 103)
-                        .addComponent(btnNovoCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimpar))
+                        .addComponent(btnNovoCliente))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
@@ -134,7 +131,6 @@ public class ClienteBuscar extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimpar)
                     .addComponent(btnNovoCliente)
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
@@ -146,20 +142,26 @@ public class ClienteBuscar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-       cliente.setNome(txtBuscaCliente.getText());
         
-        List<Cliente> resultado = repositorio.Buscar(cliente);
+        List<Cliente> list = new ArrayList<>();
+        
+        try{
+            if(!this.txtBuscaCliente.getText().isEmpty()){
+                list = this.repositorio.ClienteNome(this.txtBuscaCliente.getText());
+            
+            }else{
+                list = this.repositorio.ClienteNome(null);
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Erro durante o processo!", "Information", JOptionPane.ERROR_MESSAGE);
+        }
         
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("NOME");
         modelo.addColumn("CPF");
-        
-       
-      
-        
-        for(Cliente c : resultado){
+
+        for(Cliente c : list){
             
             Vector linha = new Vector();
             linha.add(c.getId());
@@ -173,33 +175,7 @@ public class ClienteBuscar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-   private void btnNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {                                        
-       // TODO add your handling code here:
-        ClienteEditar tela = new ClienteEditar(new Cliente());
-        this.getParent().add(tela);
-        tela.setVisible(true);
-        
-        
-        // Passa o modelo para o jTable
-        //tblResultado.setModel(modelo);
-    }                                         
-
-    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
-         if(JOptionPane.showConfirmDialog(this, "Deseja realmente limpar a busca?", "Confirmação", JOptionPane.YES_NO_OPTION) 
-                == JOptionPane.YES_OPTION) {
-
-            txtBuscaCliente.setText("");
-
-            DefaultTableModel modelo = new DefaultTableModel();
-
-            modelo.addColumn("ID");
-            modelo.addColumn("NOME");
-            modelo.addColumn("CPF");
-
-            tblResultado.setModel(modelo);
-        }
-    }//GEN-LAST:event_btnLimparActionPerformed
+                                          
 
     private void tblResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResultadoMouseClicked
         // TODO add your handling code here:
@@ -214,10 +190,15 @@ public class ClienteBuscar extends javax.swing.JInternalFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_tblResultadoMouseClicked
 
+    private void btnNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoClienteActionPerformed
+        ClienteEditar tela = new ClienteEditar(new Cliente());
+        this.getParent().add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnNovoClienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovoCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -40,11 +40,6 @@ public class ProdutoDAO extends DataAccessObject<Produto> implements ProdutoRepo
     }
 
     @Override
-    public boolean Apagar(Produto obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public Produto ProdutoNome(String nome) {
         
         String jpql = "select pd from Produto pd where pd.nome =:parameter";
@@ -58,6 +53,21 @@ public class ProdutoDAO extends DataAccessObject<Produto> implements ProdutoRepo
         
         return null;
         
+    }
+
+    @Override
+    public List<Produto> NomeProduto(String nome) {
+        String jpql = "select o from Produto o";
+        
+        if(nome != null){
+            jpql = "select pd from Produto pd where pd.nome =:parameter";
+            Query sql = this.manager.createQuery(jpql);
+        
+            sql.setParameter("parameter", nome);
+            return sql.getResultList();
+        }
+        Query sql = this.manager.createQuery(jpql);        
+        return sql.getResultList();
     }
     
 }

@@ -81,7 +81,6 @@ public class ProdutoEditar extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         txtNome = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
@@ -115,8 +114,6 @@ public class ProdutoEditar extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancelar.setText("Cancelar");
-
         lblId.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,28 +131,26 @@ public class ProdutoEditar extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel1))
                                 .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDescricao)
-                                    .addComponent(txtNome)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(385, 385, 385))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                                    .addComponent(txtValorU))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtValorU, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(300, 300, 300))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addComponent(btnSalvar)
-                        .addGap(89, 89, 89)
-                        .addComponent(btnRemover)
-                        .addGap(93, 93, 93)
-                        .addComponent(btnCancelar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRemover)))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -184,8 +179,7 @@ public class ProdutoEditar extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnRemover)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnRemover))
                 .addGap(74, 74, 74))
         );
 
@@ -212,20 +206,24 @@ public class ProdutoEditar extends javax.swing.JInternalFrame {
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
-        if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o produto atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
+        try{
+           if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o produto atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
                 == JOptionPane.YES_OPTION){
-            if(repositorio.Apagar(this.produto)){
-                this.setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
-                        JOptionPane.ERROR_MESSAGE);
-            }
+                if(repositorio.Apagar(this.produto)){
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } 
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Erro no processo!", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnRemoverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;

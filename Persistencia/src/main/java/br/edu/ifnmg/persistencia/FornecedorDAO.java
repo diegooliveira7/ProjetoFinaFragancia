@@ -39,8 +39,18 @@ public class FornecedorDAO extends DataAccessObject<Fornecedor> implements Forne
     }    
 
     @Override
-    public boolean Apagar(Fornecedor obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Fornecedor> FornecedorNome(String nome) {
+        String jpql = "select o from Fornecedor o";
+        
+        if(nome != null){
+            jpql = "select pd from Fornecedor pd where pd.nome =:parameter";
+            Query sql = this.manager.createQuery(jpql);
+        
+            sql.setParameter("parameter", nome);
+            return sql.getResultList();
+        }
+        Query sql = this.manager.createQuery(jpql);        
+        return sql.getResultList();
     }
 
  

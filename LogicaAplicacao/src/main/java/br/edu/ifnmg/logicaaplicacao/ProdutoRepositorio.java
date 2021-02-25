@@ -5,6 +5,8 @@
  */
 package br.edu.ifnmg.logicaaplicacao;
 
+import java.util.List;
+
 /**
  *
  * @author larisse
@@ -12,5 +14,6 @@ package br.edu.ifnmg.logicaaplicacao;
 public interface ProdutoRepositorio extends Repositorio<Produto> {
     
     public Produto ProdutoNome(String nome);
+    public List<Produto> NomeProduto(String nome);
     
 }

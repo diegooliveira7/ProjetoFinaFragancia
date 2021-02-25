@@ -40,9 +40,25 @@ public class ClienteDAO extends DataAccessObject<Cliente> implements ClienteRepo
         return sql.getResultList();
     }
   
+//    @Override
+//    public boolean Apagar(Cliente obj) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
     @Override
-    public boolean Apagar(Cliente obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Cliente> ClienteNome(String nome) {
+        String jpql = "select o from Cliente o";
+        
+        if(nome != null){
+            jpql = "select pd from Cliente pd where pd.nome =:parameter";
+            Query sql = this.manager.createQuery(jpql);
+        
+            sql.setParameter("parameter", nome);
+            return sql.getResultList();
+        }
+        Query sql = this.manager.createQuery(jpql);        
+        return sql.getResultList();
+
     }
     
 }

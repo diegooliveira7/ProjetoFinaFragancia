@@ -7,6 +7,7 @@ package br.edu.ifnmg.apresentacao;
 import br.edu.ifnmg.logicaaplicacao.Produto;
 import br.edu.ifnmg.logicaaplicacao.ProdutoRepositorio;
 import br.edu.ifnmg.logicaaplicacao.RepositorioFactory;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -45,6 +46,8 @@ public class ProdutoBuscar extends javax.swing.JInternalFrame {
         txtBuscaProduto = new javax.swing.JTextField();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Buscar Produto");
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -62,6 +65,11 @@ public class ProdutoBuscar extends javax.swing.JInternalFrame {
         });
 
         btnNovoProduto.setText("Novo Produto");
+        btnNovoProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoProdutoActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,20 +149,24 @@ public class ProdutoBuscar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        produto.setNome(txtBuscaProduto.getText());
+        List<Produto> list = new ArrayList<>();
         
-        List<Produto> resultado = repositorio.Buscar(produto);
+        try{
+            if(!this.txtBuscaProduto.getText().isEmpty()){
+                list = this.repositorio.NomeProduto(this.txtBuscaProduto.getText());
+            
+            }else{
+                list = this.repositorio.NomeProduto(null);
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Erro durante o processo!", "Information", JOptionPane.ERROR_MESSAGE);
+        }
         
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("NOME");
-        
-        
-       
-      
-        
-        for(Produto c : resultado){
+
+        for(Produto c : list){
             
             Vector linha = new Vector();
             linha.add(c.getId());
@@ -197,6 +209,12 @@ public class ProdutoBuscar extends javax.swing.JInternalFrame {
         this.getParent().add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_formMouseClicked
+
+    private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
+        ProdutoEditar tela = new ProdutoEditar(new Produto());
+        this.getParent().add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

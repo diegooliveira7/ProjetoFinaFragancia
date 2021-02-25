@@ -54,7 +54,6 @@ public class FornecedorEditar extends javax.swing.JInternalFrame {
 
         btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,6 +68,8 @@ public class FornecedorEditar extends javax.swing.JInternalFrame {
         txtEndereco = new javax.swing.JTextField();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Editar Fornecedor");
 
         btnSalvar.setText("Salvar");
@@ -84,8 +85,6 @@ public class FornecedorEditar extends javax.swing.JInternalFrame {
                 btnRemoverActionPerformed(evt);
             }
         });
-
-        btnCancelar.setText("Cancelar");
 
         jLabel1.setText("ID");
 
@@ -120,17 +119,15 @@ public class FornecedorEditar extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(btnSalvar)
-                            .addGap(105, 105, 105)
-                            .addComponent(btnRemover)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                            .addComponent(btnCancelar))
-                        .addComponent(txtCnpj)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRemover))
+                        .addComponent(txtCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
                         .addComponent(txtEndereco)
                         .addComponent(txtEmail)
                         .addComponent(txtTelefone)
@@ -167,8 +164,7 @@ public class FornecedorEditar extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnRemover)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnRemover))
                 .addGap(53, 53, 53))
         );
 
@@ -200,20 +196,24 @@ public class FornecedorEditar extends javax.swing.JInternalFrame {
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
-         if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o fornecedor atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
+        try{
+            if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o fornecedor atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
                 == JOptionPane.YES_OPTION){
-            if(repositorio.Apagar(this.fornecedor)){
-                this.setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
-                        JOptionPane.ERROR_MESSAGE);
+                if(repositorio.Apagar(this.fornecedor)){
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Erro no processo!", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
+         
     }//GEN-LAST:event_btnRemoverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
